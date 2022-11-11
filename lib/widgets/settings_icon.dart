@@ -19,13 +19,13 @@ class SettingsIcon extends StatelessWidget {
             size: 30.0,
             color: Colors.black,
           ),
-          SizedBox(
+          const SizedBox(
             width: 15.0,
           ),
           Text(
             nameSettings,
             textAlign: TextAlign.left,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontFamily: 'SF pro Regular',
               fontSize: 17,

@@ -16,7 +16,7 @@ class SignUp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               "Sign Up".text.xl5.bold.color(Colors.black).make(),
-              SizedBox(height: 20.0,),
+              const SizedBox(height: 20.0,),
               "Create your account".text.xl2.make(),
               CupertinoFormSection(
                   header: "Personal Details".text.make(),
@@ -73,7 +73,7 @@ class SignUp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   child: InkWell(
                     child: AnimatedContainer(
-                      duration: Duration(seconds: 1),
+                      duration: const Duration(seconds: 1),
                       width: 150,
                       height: 50,
                       alignment: Alignment.center,

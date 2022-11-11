@@ -37,7 +37,7 @@ Future<void> uPloadPhoto(BuildContext context) {
                 borderRadius: BorderRadius.circular(8),
                 child: InkWell(
                   child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     width: 150,
                     height: 50,
                     alignment: Alignment.center,

@@ -1,89 +1,9 @@
-import 'package:deeging_frontend/views/chat_screen.dart';
-import 'package:deeging_frontend/views/home.dart';
-import 'package:deeging_frontend/views/message_request.dart';
-import 'package:deeging_frontend/views/profile.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:deeging_frontend/models/data.dart';
+import 'package:deeging_frontend/widgets/confirm_message.dart';
 import 'package:flutter/material.dart';
-import '../models/data.dart';
-import '../widgets/profile_photo.dart';
-import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-class HomeChats extends StatelessWidget {
-  const HomeChats({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-        appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: [
-          //  IconButton(
-          //   icon: const Icon(
-          //     CupertinoIcons.waveform_path,
-          //     color: Colors.black,
-          //     size: 26.0,
-          //   ),
-          //   onPressed: () {
-          //     Get.off( const Home(), transition: Transition.zoom);
-          //   },
-            
-          // ),
-          // IconButton(
-          //   icon: const Icon(
-          //     CupertinoIcons.chat_bubble,
-          //     color: Colors.black,
-          //     size: 26.0,
-          //   ),
-          //   onPressed: () {
-          //      Get.off( const HomeChats(), transition: Transition.zoom);
-          //   },
-          // ),
-        
-          IconButton(
-            icon: const Icon(
-              CupertinoIcons.bell,
-              color: Colors.black,
-              size: 28.0,
-            ),
-            onPressed: () {
-               //Get.to( const MessageRequestScreen(), transition: Transition.zoom);
-                PersistentNavBarNavigator.pushNewScreen(
-        context,
-        screen: const MessageRequestScreen(),
-        withNavBar: true, // OPTIONAL VALUE. True by default.
-        pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    );
-            },
-          ),
-          GestureDetector(
-            onTap: () {
-              //Get.to(Profile());
-             //  Get.to( const Profile(), transition: Transition.zoom);
-               PersistentNavBarNavigator.pushNewScreen(
-        context,
-        screen: const Profile(),
-        withNavBar: true, // OPTIONAL VALUE. True by default.
-        pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    );
-            },
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 10.0, 20.0, 10.0),
-              child: OwnersProfileImage(
-                  ownersImageUrl: currentUser.avatar, size: 36.0),
-            ),
-          ),
-        ],
-      ),
-      body: const RecentChats(),
-    );
-  }
-}
-
-class RecentChats extends StatelessWidget {
-  const RecentChats({
+class NotificationRequest extends StatelessWidget {
+  const NotificationRequest({
     Key? key,
   }) : super(key: key);
 
@@ -96,19 +16,17 @@ class RecentChats extends StatelessWidget {
       ),
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: chats.length,
+          itemCount: messageRequests.length,
           itemBuilder: (BuildContext context, int index) {
-            final chat = chats[index];
+            final messageRequest = messageRequests[index];
             //print(chat.sender);
             return GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ChatScreen(
-                    user: chat.sender,
-                  ),
-                ),
-              ),
+              onTap: (){
+                showAlertDialog(
+                   context
+                  );
+              },
+                
               child: Container(
                 margin: const EdgeInsets.only(
                   top: 5.0,
@@ -118,7 +36,7 @@ class RecentChats extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20.0, vertical: 10.0),
                 decoration: BoxDecoration(
-                  color: chat.unread ? Colors.white : Colors.white,
+                  color: messageRequest.isSeen ? Colors.white : Colors.white,
                   borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(20.0),
                     bottomRight: Radius.circular(20.0),
@@ -132,7 +50,7 @@ class RecentChats extends StatelessWidget {
                         CircleAvatar(
                           radius: 35.0,
                           backgroundImage:
-                              AssetImage(chat.sender.avatar),
+                              AssetImage(messageRequest.sender.avatar),
                         ),
                         const SizedBox(
                           width: 10.0,
@@ -142,7 +60,7 @@ class RecentChats extends StatelessWidget {
                               CrossAxisAlignment.start,
                           children: [
                             Text(
-                              chat.sender.firstName,
+                              messageRequest.sender.username,
                               style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 15.0,
@@ -158,7 +76,7 @@ class RecentChats extends StatelessWidget {
                                       .width *
                                   0.45,
                               child: Text(
-                                chat.text,
+                                messageRequest.text,
                                 style: const TextStyle(
                                   color: Colors.blueGrey,
                                   fontSize: 15.0,
@@ -174,7 +92,7 @@ class RecentChats extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          chat.time,
+                          messageRequest.time,
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 15.0,
@@ -184,7 +102,7 @@ class RecentChats extends StatelessWidget {
                         const SizedBox(
                           height: 5.0,
                         ),
-                        chat.unread
+                        messageRequest.isSeen
                             ? Container(
                                 height: 20,
                                 width: 40,

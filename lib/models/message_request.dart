@@ -1,30 +1,28 @@
+
 import 'package:deeging_frontend/models/user.dart';
 
-class Message{
+class MessageRequest{
   final String? id;
   final String text;
   final User sender;
   final String time;
-  final bool unread;
-  final bool isLiked;
+  final bool isSeen;
 
-  Message({
+  MessageRequest({
      this.id,
     required this.text,
     required this.sender,
     required this.time,
-    required this.unread,
-    required this.isLiked,
+    required this.isSeen,
   });
 
-  factory Message.fromJson(Map<String, dynamic> json) {
-    return Message(
+  factory MessageRequest.fromJson(Map<String, dynamic> json) {
+    return MessageRequest(
       id: json['id'],
       text: json['text'],
       sender: User.fromJson(json['sender']),
       time: json['time'],
-      unread: json['unread'],
-      isLiked: json['isLiked'],
+      isSeen: json['isSeen'],
     );
   }
 
@@ -34,9 +32,7 @@ class Message{
       'text': text,
       'sender': sender.toJson(),
       'time': time,
-      'unread': unread,
-      'isLiked': isLiked,
+      'isSeen': isSeen,
     };
   }
 }
-

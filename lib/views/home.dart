@@ -1,11 +1,13 @@
 import 'package:deeging_frontend/constants/themes.dart';
 import 'package:deeging_frontend/models/data.dart';
 import 'package:deeging_frontend/views/home_chat.dart';
+import 'package:deeging_frontend/views/message_request.dart';
 import 'package:deeging_frontend/views/profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgets/profile_photo.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Home extends StatelessWidget {
   
@@ -14,21 +16,33 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(
-              CupertinoIcons.chat_bubble,
-              color: Colors.black,
-              size: 26.0,
-            ),
-            onPressed: () {
-              Get.to( const HomeChats(), transition: Transition.zoom);
-            },
+          // IconButton(
+          //   icon: const Icon(
+          //     CupertinoIcons.waveform_path,
+          //     color: Colors.black,
+          //     size: 26.0,
+          //   ),
+          //   onPressed: () {
+          //     Get.off( const Home(), transition: Transition.zoom);
+          //   },
             
-          ),
+          // ),
+          // IconButton(
+          //   icon: const Icon(
+          //     CupertinoIcons.chat_bubble,
+          //     color: Colors.black,
+          //     size: 26.0,
+          //   ),
+          //   onPressed: () {
+          //     Get.off( const HomeChats(), transition: Transition.zoom);
+          //   },
+            
+          // ),
         
           IconButton(
             icon: const Icon(
@@ -37,12 +51,24 @@ class Home extends StatelessWidget {
               size: 28.0,
             ),
             onPressed: () {
-               Get.to( const HomeChats(), transition: Transition.zoom);
+               //Get.to( const MessageRequestScreen(), transition: Transition.zoom);
+        PersistentNavBarNavigator.pushNewScreen(
+        context,
+        screen: const MessageRequestScreen(),
+        withNavBar: true, // OPTIONAL VALUE. True by default.
+        pageTransitionAnimation: PageTransitionAnimation.cupertino,
+    );
             },
           ),
           GestureDetector(
             onTap: () {
-              Get.to( const StudentProfile(), transition: Transition.zoom);
+              //Get.to( const Profile(), transition: Transition.zoom);
+              PersistentNavBarNavigator.pushNewScreen(
+        context,
+        screen: const Profile(),
+        withNavBar: true, // OPTIONAL VALUE. True by default.
+        pageTransitionAnimation: PageTransitionAnimation.cupertino,
+    );
             },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(8.0, 10.0, 20.0, 10.0),
@@ -78,7 +104,13 @@ class Home extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(_createRoute());
+                      //Get.to( const Profile(), transition: Transition.zoom);
+                       PersistentNavBarNavigator.pushNewScreen(
+        context,
+        screen: const Profile(),
+        withNavBar: true, // OPTIONAL VALUE. True by default.
+        pageTransitionAnimation: PageTransitionAnimation.cupertino,
+    );
                     },
                     child: Column(
                       children: [
@@ -107,7 +139,7 @@ class Home extends StatelessWidget {
   }
   Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const StudentProfile(),
+    pageBuilder: (context, animation, secondaryAnimation) => const Profile(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;

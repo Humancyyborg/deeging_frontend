@@ -1,10 +1,10 @@
-import 'package:deeging_frontend/views/home.dart';
-import 'package:deeging_frontend/views/home_chat.dart';
-import 'package:deeging_frontend/views/login.dart';
-import 'package:deeging_frontend/views/onboarding.dart';
+
+import 'package:deeging_frontend/views/bottom_navigation.dart';
+import 'package:deeging_frontend/views/profile.dart';
 import 'package:deeging_frontend/views/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.black //here you can give the text color
           )
      ),
-      home:  Onboarding(),
+      home:  BottomNav() //Onboarding(),
     );
   }
 }

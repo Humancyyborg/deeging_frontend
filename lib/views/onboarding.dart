@@ -3,7 +3,6 @@ import 'package:deeging_frontend/views/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
-import 'package:get/get.dart';
 
 class Onboarding extends StatelessWidget {
   // const Onboarding({Key? key}) : super(key: key);

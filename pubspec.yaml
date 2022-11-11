@@ -37,6 +37,7 @@ dependencies:
   velocity_x: ^3.5.1
   get:
   flutter_onboarding_slider: ^1.0.7
+  persistent_bottom_nav_bar: ^5.0.2
 
 
 dev_dependencies:

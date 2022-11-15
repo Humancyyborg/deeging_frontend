@@ -20,27 +20,7 @@ class HomeChats extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-          //  IconButton(
-          //   icon: const Icon(
-          //     CupertinoIcons.waveform_path,
-          //     color: Colors.black,
-          //     size: 26.0,
-          //   ),
-          //   onPressed: () {
-          //     Get.off( const Home(), transition: Transition.zoom);
-          //   },
-            
-          // ),
-          // IconButton(
-          //   icon: const Icon(
-          //     CupertinoIcons.chat_bubble,
-          //     color: Colors.black,
-          //     size: 26.0,
-          //   ),
-          //   onPressed: () {
-          //      Get.off( const HomeChats(), transition: Transition.zoom);
-          //   },
-          // ),
+         
         
           IconButton(
             icon: const Icon(
@@ -60,8 +40,6 @@ class HomeChats extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              //Get.to(Profile());
-             //  Get.to( const Profile(), transition: Transition.zoom);
                PersistentNavBarNavigator.pushNewScreen(
         context,
         screen: const Profile(),

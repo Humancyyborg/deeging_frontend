@@ -92,11 +92,14 @@ class NotificationRequest extends StatelessWidget {
                     Column(
                       children: [
                         Text(
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
                           messageRequest.time,
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 15.0,
                             fontWeight: FontWeight.bold,
+                            
                           ),
                         ),
                         const SizedBox(

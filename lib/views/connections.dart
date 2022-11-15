@@ -8,16 +8,7 @@ class Connections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          'Connections',
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.symmetric( vertical: 30.0),
         child: GridView.builder(
           physics: const BouncingScrollPhysics(),
@@ -47,7 +38,6 @@ class Connections extends StatelessWidget {
             );
           },
         ),
-      ),
     );
   }
 }

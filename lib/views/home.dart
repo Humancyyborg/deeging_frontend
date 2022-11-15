@@ -10,7 +10,6 @@ import '../widgets/profile_photo.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class Home extends StatelessWidget {
-  
   const Home({Key? key}) : super(key: key);
 
   @override
@@ -30,7 +29,7 @@ class Home extends StatelessWidget {
           //   onPressed: () {
           //     Get.off( const Home(), transition: Transition.zoom);
           //   },
-            
+
           // ),
           // IconButton(
           //   icon: const Icon(
@@ -41,9 +40,9 @@ class Home extends StatelessWidget {
           //   onPressed: () {
           //     Get.off( const HomeChats(), transition: Transition.zoom);
           //   },
-            
+
           // ),
-        
+
           IconButton(
             icon: const Icon(
               CupertinoIcons.bell,
@@ -51,24 +50,24 @@ class Home extends StatelessWidget {
               size: 28.0,
             ),
             onPressed: () {
-               //Get.to( const MessageRequestScreen(), transition: Transition.zoom);
-        PersistentNavBarNavigator.pushNewScreen(
-        context,
-        screen: const MessageRequestScreen(),
-        withNavBar: true, // OPTIONAL VALUE. True by default.
-        pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    );
+              //Get.to( const MessageRequestScreen(), transition: Transition.zoom);
+              PersistentNavBarNavigator.pushNewScreen(
+                context,
+                screen: const MessageRequestScreen(),
+                withNavBar: true, // OPTIONAL VALUE. True by default.
+                pageTransitionAnimation: PageTransitionAnimation.cupertino,
+              );
             },
           ),
           GestureDetector(
             onTap: () {
               //Get.to( const Profile(), transition: Transition.zoom);
               PersistentNavBarNavigator.pushNewScreen(
-        context,
-        screen: const Profile(),
-        withNavBar: true, // OPTIONAL VALUE. True by default.
-        pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    );
+                context,
+                screen: const Profile(),
+                withNavBar: true, // OPTIONAL VALUE. True by default.
+                pageTransitionAnimation: PageTransitionAnimation.cupertino,
+              );
             },
             child: Padding(
               padding: const EdgeInsets.fromLTRB(8.0, 10.0, 20.0, 10.0),
@@ -85,13 +84,15 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal:20.0),
-                child:  Text(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
                   'Students Nearby',
                   style: Palette.bodyTextSyle,
                 ),
               ),
-              const SizedBox(height: 10.0,),
+              const SizedBox(
+                height: 10.0,
+              ),
               GridView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
@@ -105,12 +106,13 @@ class Home extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       //Get.to( const Profile(), transition: Transition.zoom);
-                       PersistentNavBarNavigator.pushNewScreen(
-        context,
-        screen: const Profile(),
-        withNavBar: true, // OPTIONAL VALUE. True by default.
-        pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    );
+                      PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        screen: const Profile(),
+                        withNavBar: false, // OPTIONAL VALUE. True by default.
+                        pageTransitionAnimation:
+                            PageTransitionAnimation.cupertino,
+                      );
                     },
                     child: Column(
                       children: [
@@ -137,22 +139,23 @@ class Home extends StatelessWidget {
       ),
     );
   }
+
   Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const Profile(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0);
-      const end = Offset.zero;
-      const curve = Curves.ease;
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const Profile(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
-}
-
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
 }

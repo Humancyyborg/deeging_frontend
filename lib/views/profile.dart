@@ -3,6 +3,7 @@ import 'package:deeging_frontend/widgets/update_student_profile.dart';
 import 'package:deeging_frontend/widgets/upload_photo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants/themes.dart';
 import '../widgets/confirm_message.dart';
 import '../widgets/send_message.dart';
@@ -46,10 +47,10 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                       const SizedBox(
-                        width: 15.0,
+                        width: 30.0,
                       ),
                       Column(
-                        children: const [
+                        children: [
                           Text(
                             'Gloria Mckinney',
                             textAlign: TextAlign.left,
@@ -69,43 +70,48 @@ class _ProfileState extends State<Profile> {
                                 color: Color.fromRGBO(132, 132, 132, 1),
                                 fontFamily: 'SF Pro Text Regular',
                                 fontSize: 16,
-                                letterSpacing: 1.3,
                                 fontWeight: FontWeight.normal,
                                 height: 1),
                           ),
                           SizedBox(
                             height: 5.0,
                           ),
-                          Text(
-                            'San Francisco, CA',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
                                 color: Color.fromRGBO(132, 132, 132, 1),
-                                fontFamily: 'SF Pro Text Regular',
-                                fontSize: 16,
-                                letterSpacing: 1.3,
-                                fontWeight: FontWeight.normal,
-                                height: 1),
+                                size: 18,
+                              ),
+                              Text(
+                                'San Francisco, CA',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(132, 132, 132, 1),
+                                    fontFamily: 'SF Pro Text Regular',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        width: 15.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 30.0),
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.message,
-                            color: Color.fromARGB(255, 28, 23, 23),
-                            size: 50.0,
-                            fill: 0.0,
-                          ),
-                          onPressed: () {
-                            sendMessageRequest(context);
-                          },
-                        ),
-                      ),
+
+                      // Padding(
+                      //   padding: const EdgeInsets.only(bottom: 30.0),
+                      //   child: IconButton(
+                      //     icon: const Icon(
+                      //       Icons.message,
+                      //       color: Color.fromARGB(255, 28, 23, 23),
+                      //       size: 50.0,
+                      //       fill: 0.0,
+                      //     ),
+                      //     onPressed: () {
+                      //       sendMessageRequest(context);
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -126,23 +132,61 @@ class _ProfileState extends State<Profile> {
                         height: 1),
                   ),
                 ),
-                const SizedBox(
-                  height: 10.0,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 70.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ButtonBar(
+                        children: [
+                          // OutlinedButton(
+                          //   onPressed: null,
+                          //   style: ButtonStyle(
+                          //     backgroundColor: MaterialStateProperty.all(
+                          //         Color.fromARGB(0, 0, 0, 0)),
+                          //     shape: MaterialStateProperty.all(
+                          //         RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(15.0),
+                          //     )),
+                          //   ),
+                          //   child: const Text(
+                          //     "Connection",
+                          //   ),
+                          // ),
+                          OutlinedButton(
+                            onPressed: (){
+                              sendMessageRequest(context);
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Color.fromARGB(255, 1, 4, 10)),
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                            ),
+                            child: const Text(
+                              "Message",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          SizedBox(width: 10.0,),
+                          OutlinedButton(
+                            onPressed: null,
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              )),
+                            ),
+                            child: const Text("Wave 👋"),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                // const Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 20.0),
-                //   child: Text(
-                //     '+375(29)9638433',
-                //     textAlign: TextAlign.left,
-                //     style: TextStyle(
-                //         color: Color.fromRGBO(19, 19, 19, 1),
-                //         fontFamily: 'SF Pro Text Regular',
-                //         fontSize: 17,
-                //         letterSpacing: 1.3,
-                //         fontWeight: FontWeight.normal,
-                //         height: 1),
-                //   ),
-                // ),
+           
                 const SizedBox(
                   height: 10.0,
                 ),
@@ -151,17 +195,33 @@ class _ProfileState extends State<Profile> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: Text(
-                      'Update',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Gilroy',
-                        fontSize: 17,
-                        letterSpacing: 1.3,
-                        fontWeight: FontWeight.normal,
-                        height: 1,
-                      ),
+                      textAlign: TextAlign.center,
+                      'Looking for Hiking Partner in the wood. If you are this person hit me up',
+                      style: TextStyle(color: Colors.black, fontSize: 17),
                     ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                   Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 135.0),
+                  child: Row(
+                     crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                     const Icon(FontAwesomeIcons.snapchat,
+                          color: Colors.black, size: 30.0),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      const Icon(FontAwesomeIcons.linkedinIn,
+                          color: Colors.black, size: 30.0),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      const Icon(FontAwesomeIcons.instagram,
+                          color: Colors.black, size: 30.0),
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -262,36 +322,22 @@ class _ProfileState extends State<Profile> {
                 const SizedBox(
                   height: 15.0,
                 ),
+              
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
-                    'LOOKING FOR',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 17,
-                        letterSpacing: 1.3,
-                        fontWeight: FontWeight.normal,
-                        height: 1),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text(
-                    'I’m looking for a hiking partner in the mountains',
+                    'Connections',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         color: Colors.black,
-                        fontFamily: 'Gilroy',
-                        fontSize: 17,
-                        letterSpacing: 1.3,
-                        fontWeight: FontWeight.normal,
-                        height: 1),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        ),
                   ),
+                  
                 ),
+                const Connections(),
+                
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -302,23 +348,20 @@ class _ProfileState extends State<Profile> {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         color: Colors.black,
-                        fontFamily: 'Gilroy',
-                        fontSize: 20,
-                        letterSpacing: 0,
-                        fontWeight: FontWeight.w600,
-                        height: 1),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 const SizedBox(
-                  height: 20.0,
+                  height: 10.0,
                 ),
-                GestureDetector(
-                  onTap: () => Get.to(const Connections()),
-                  child: const SettingsIcon(
-                    myicon: CupertinoIcons.chat_bubble_2,
-                    nameSettings: 'See connections',
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () => Get.to(const Connections()),
+                //   child: const SettingsIcon(
+                //     myicon: CupertinoIcons.chat_bubble_2,
+                //     nameSettings: 'See connections',
+                //   ),
+                // ),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -329,9 +372,14 @@ class _ProfileState extends State<Profile> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                const SettingsIcon(
-                  myicon: Icons.privacy_tip_outlined,
-                  nameSettings: 'Privacy',
+                GestureDetector(
+                  onTap: () {
+                    studentProfileUpdate(context);
+                  },
+                  child: const SettingsIcon(
+                    myicon: Icons.privacy_tip_outlined,
+                    nameSettings: 'Update Profile',
+                  ),
                 ),
                 const SizedBox(
                   height: 20.0,
